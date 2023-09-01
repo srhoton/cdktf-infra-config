@@ -11,9 +11,9 @@ jobs:
           role-arn: ${AWS_OIDC_ROLE_ARN}
           aws-region: us-west-2
       - run: 
-        name: check-login
-        command: | 
-          aws sts get-caller-identity
+          name: check-login
+          command: | 
+            aws sts get-caller-identity
 workflows:
   test-aws-login:
     jobs:
