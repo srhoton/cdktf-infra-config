@@ -2,7 +2,7 @@ version: '2.1'
 orbs: 
   aws-cli: circleci/aws-cli@4.1.0
 jobs:
-  credential-setup:
+  credential_setup:
     executor: aws-cli/default
     steps:
       - checkout
