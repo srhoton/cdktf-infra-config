@@ -23,4 +23,4 @@ workflows:
   test-aws-login:
     jobs:
       - credential-setup: 
-          context: dev
+          context: Dev
