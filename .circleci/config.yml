@@ -1,0 +1,23 @@
+version '2.1'
+orbs: 
+  aws-cli: circleci/aws-cli@4.1.0
+jobs:
+  credential-setup:
+    docker: 
+      - image: cimg/aws:2023.08.1
+    steps:
+      - checkout
+      - aws-cli/configure:
+          role-arn: ${AWS_OIDC_ROLE_ARN}
+          role-session-name: dev-test
+          aws-region: us-west-2
+      - run: 
+        name: check-login
+        command: | 
+          aws sts get-caller-identity
+workflows:
+  test-aws-login:
+    jobs:
+      - credential-setup: 
+          context: dev
+
