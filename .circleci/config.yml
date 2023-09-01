@@ -3,13 +3,12 @@ orbs:
   aws-cli: circleci/aws-cli@4.1.0
 jobs:
   credential-setup:
-    docker: 
-      - image: cimg/aws:2023.08.1
+    executor: aws-cli/default
     steps:
       - checkout
-      - aws-cli/configure:
+      - aws-cli/setup:
+          profile-name: dev
           role-arn: ${AWS_OIDC_ROLE_ARN}
-          role-session-name: dev-test
           aws-region: us-west-2
       - run: 
         name: check-login
@@ -20,4 +19,3 @@ workflows:
     jobs:
       - credential-setup: 
           context: dev
-
