@@ -6,13 +6,8 @@ jobs:
     executor: aws-cli/default
     steps:
       - checkout
-      - run: 
-          name: print-env
-          command: |
-            printenv
-            echo "AWS_OIDC_ROLE_ARN: $AWS_OIDC_ROLE_ARN"
       - aws-cli/setup:
-          profile_name: dev
+          profile_name: cli-access
           role_arn: ${AWS_OIDC_ROLE_ARN}
           region: us-west-2
       - run: 
