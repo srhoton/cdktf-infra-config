@@ -7,9 +7,9 @@ jobs:
     steps:
       - checkout
       - aws-cli/setup:
-          profile-name: dev
-          role-arn: ${AWS_OIDC_ROLE_ARN}
-          aws-region: us-west-2
+          profile_name: dev
+          role_arn: ${AWS_OIDC_ROLE_ARN}
+          region: us-west-2
       - run: 
           name: check-login
           command: | 
