@@ -15,7 +15,26 @@ jobs:
           command: | 
             aws sts get-caller-identity
 workflows:
-  test-aws-login:
+  on-merge-to-main:
+    jobs:
+      - credential-setup: 
+          context: Test
+          filters:
+            branches:
+              only: main
+  on-branch-created-or-updated:
     jobs:
       - credential-setup: 
           context: Dev
+          filters:
+            branches:
+              ignore: main
+  on-tag:
+    jobs:
+      - credential-setup: 
+          context: Stage
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v.*/
