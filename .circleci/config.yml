@@ -6,6 +6,10 @@ jobs:
     executor: aws-cli/default
     steps:
       - checkout
+      - run: 
+        name: print-env
+        command: |
+          printenv
       - aws-cli/setup:
           profile_name: dev
           role_arn: ${AWS_OIDC_ROLE_ARN}
@@ -13,7 +17,6 @@ jobs:
       - run: 
           name: check-login
           command: | 
-            printenv
             aws sts get-caller-identity
 workflows:
   test-aws-login:
