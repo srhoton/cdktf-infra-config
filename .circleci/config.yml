@@ -7,9 +7,9 @@ jobs:
     steps:
       - checkout
       - run: 
-        name: print-env
-        command: |
-          printenv
+          name: print-env
+          command: |
+            printenv
       - aws-cli/setup:
           profile_name: dev
           role_arn: ${AWS_OIDC_ROLE_ARN}
