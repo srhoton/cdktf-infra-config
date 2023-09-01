@@ -13,6 +13,7 @@ jobs:
       - run: 
           name: check-login
           command: | 
+            printenv
             aws sts get-caller-identity
 workflows:
   test-aws-login:
