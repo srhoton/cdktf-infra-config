@@ -1,0 +1,16 @@
+{
+  "language": "typescript",
+  "app": "npx ts-node main.ts",
+  "projectId": "aa0468d1-567f-4ccc-9092-a00de408b990",
+  "sendCrashReports": "true",
+  "terraformProviders": [],
+  "terraformModules": [
+    {
+      "name": "network-module",
+      "source": "github.com/srhoton/tf-module-network"
+    }
+  ],
+  "context": {
+
+  }
+}
