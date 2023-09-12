@@ -14,6 +14,28 @@ jobs:
           name: check-login
           command: | 
             aws sts get-caller-identity
+  apply-feature:
+    docker:
+      - image: docker.mirror.hashicorp.services/hashicorp/terraform:light
+    steps:
+      - checkout
+      - aws-cli/setup:
+          role_arn: ${AWS_OIDC_ROLE_ARN}
+          aws-region: us-west-2
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: Install Bash
+          command: |
+            apk update
+            apk upgrade
+            apk add bash
+      - run:
+          name: terraform init
+          command: |
+            terraform workspace select ${TF_VAR_env_name}
+            terraform init -input=false
+
 workflows:
   on-merge-to-main:
     jobs:
