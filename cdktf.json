@@ -7,7 +7,7 @@
   "terraformModules": [
     {
       "name": "network-module",
-      "source": "github.com/srhoton/tf-module-network"
+      "source": "github.com/srhoton/tf-module-network?ref=v1.0.0"
     }
   ],
   "context": {
